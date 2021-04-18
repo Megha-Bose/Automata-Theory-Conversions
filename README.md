@@ -26,7 +26,7 @@
 {
     "states": [<array_of_all_states>],
     "letters": [<array_of_letters>],
-    "transition_matrix":[
+    "transition_function":[
                             [<original_state>, <input_letter>, <new_state>],
                             [<original_state>, <input_letter>, <new_state>],
                             .
