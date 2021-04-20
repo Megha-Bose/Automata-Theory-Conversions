@@ -7,12 +7,6 @@ nfa = {}
 nfa_states = []
 dfa_states = []
 
-def num_to_notation(num):
-    return "Q" + str(num)
-
-def notation_to_num(str):
-    return int(str[1:])
-
 def get_power_set(nfa_st):
     powerset = [[]]
     for i in nfa_st:
@@ -38,7 +32,7 @@ if __name__ == "__main__":
     dfa['transition_function'] = []
     
     for state in nfa['states']:
-        nfa_states.append(notation_to_num(state))
+        nfa_states.append(state)
 
     dfa_states = get_power_set(nfa_states)
 
@@ -47,7 +41,7 @@ if __name__ == "__main__":
     for states in dfa_states:
         temp = []
         for state in states:
-            temp.append(num_to_notation(state))
+            temp.append(state)
         dfa['states'].append(temp)
 
     for states in dfa_states:
@@ -58,12 +52,12 @@ if __name__ == "__main__":
                     start = val[0]
                     inp = val[1]
                     end = val[2]
-                    if num_to_notation(state) == start and letter == inp:
+                    if state == start and letter == inp:
                         if end not in q_to:
                             q_to.append(end)
             q_states = []
             for i in states:
-                q_states.append(num_to_notation(i))
+                q_states.append(i)
             dfa['transition_function'].append([q_states, letter, q_to])
 
     dfa['start_states'] = []
