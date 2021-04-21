@@ -135,12 +135,23 @@ def notation_to_num(str):
     return int(str[1:])
 
 
-def final_st_dfs(st):
+# def final_st_dfs(st):
+#     global nfa
+#     for val in nfa['transition_function']:
+#         if val[0] == st and val[1] == "$" and val[2] not in nfa["final_states"]:
+#             nfa["final_states"].append(val[2])
+#             final_st_dfs(val[2])
+
+def final_st_dfs():
     global nfa
-    for val in nfa['transition_function']:
-        if val[0] == st and val[1] == "$" and val[2] not in nfa["final_states"]:
-            nfa["final_states"].append(val[2])
-            final_st_dfs(val[2])
+    for st in nfa["states"]:
+        count = 0
+        for val in nfa['transition_function']:
+            if val[0] == st and val[2] != st:
+                count += 1
+        if count == 0 and st not in nfa["final_states"]:
+            nfa["final_states"].append(st)
+
 
 def arrange_nfa(fa):
     global nfa
@@ -156,9 +167,9 @@ def arrange_nfa(fa):
     st_num = [notation_to_num(i) for i in nfa['states']]
 
     nfa["start_states"].append("Q1")
-    nfa["final_states"].append("Q" + str(sorted(st_num)[-1]))
-
-    final_st_dfs(nfa["final_states"][0])
+    # nfa["final_states"].append("Q" + str(sorted(st_num)[-1]))
+    # final_st_dfs(nfa["final_states"][0])
+    final_st_dfs()
 
 
 def add_concat(regex):
