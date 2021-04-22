@@ -20,26 +20,7 @@
 - '()' : grouping
 
 ## I/O formats
-1. Regular expression I/O: `{"regex": "<any_valid_regex>"}`, for example, {"regex":"(a+b)\*+ba+c\*"}.
-2. NFA I/O:
-```
-{
-    "states": [<array_of_all_states>],
-    "letters": [<array_of_letters>],
-    "transition_function":[
-                            [<original_state>, <input_letter>, <new_state>],
-                            [<original_state>, <input_letter>, <new_state>],
-                            .
-                            .
-                            .
-                    
-                        ],
-    "start_states": [<array_of_start_states>],
-    "final_states": [<array_of_final_states>],
-}
-```
-3. DFA: Same as NFA for input. For output, a state will be represented by an array of strings and not a single string.
-
+Given for each question.
 
 ## Problem 1: Converting Regex to NFA
 
